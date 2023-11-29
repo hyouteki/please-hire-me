@@ -13,3 +13,7 @@ Spreadsheet: https://docs.google.com/spreadsheets/d/1NcB1bmKRg-j56KUsd7WNHYpkVBx
 ``` console
 pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib
 ```
+
+## References
+- https://www.youtube.com/watch?v=3wC-SCdJK2c
+- https://developers.google.com/sheets/api/quickstart/python
