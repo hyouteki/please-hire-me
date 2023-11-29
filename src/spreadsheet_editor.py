@@ -36,31 +36,38 @@ def get_sheet():
         exit(1)
     return values, sheets
 
+def itoc(index):
+    return chr(ord(letter)+index)
+
 def process_sheet(sheets):
     values = sheets.values().get(spreadsheetId=SPREADSHEET_ID, 
             range="A1:Z6666").execute().get("values", [])
-    status = values[0][3: ]
-    users = values[1][3: ]
-    skip = int(values[0][2])
-    current_population = int(values[1+skip][0])
+    status = values[0][2: ]
+    users = values[1][2: ]
+    skip = int(values[0][1])
     week_number = skip % QUESTIONS_PER_WEEK 
+    print(f"week number = {week_number}")
     alive_users = dict()
     for i in range(len(users)):
         if status[i] == "Alive":
-            alive_users[users[i]] = 3+i
+            alive_users[users[i]] = 2+i
+    print(f"alive users = {alive_users}")
     this_weeks_questions = dict()
     for i in range(QUESTIONS_PER_WEEK):
-        this_weeks_questions[values[2+skip+i][2]] = 2+skip+i
-    print(this_weeks_questions)
+        this_weeks_questions[values[2+skip+i][1]] = 2+skip+i
+    print(f"this week's questions = {this_weeks_questions}")
     for user in alive_users.keys():
         for ques in profile_scrapper.get_questions(user):
-            if ques in this_weeks_questions:
-                user_index = alive_users[user]
-                ques_index = this_weeks_questions[ques]
-                if (values[ques_index][user_index] != "Done"):
-                    # sheets.values().update(spreadsheetId=SPREADSHEET_ID, )
-                    # TODO: Complete this
-                    pass
+            if ques not in this_weeks_questions:
+                continue
+            user_index = alive_users[user]
+            ques_index = this_weeks_questions[ques]
+            if (values[ques_index][user_index] == "Done"):
+                continue
+            print(f"changing status to done for {user}, {ques}")
+            sheets.values().update(spreadsheetId=SPREADSHEET_ID, 
+                range=f"{itoc(user_index)}{ques_index+1}", 
+                valueInputOption="USER_ENTERED", body={"values": [["Done"]]})
 
 if __name__ == "__main__":
     process_sheet(get_sheet())
