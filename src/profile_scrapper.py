@@ -28,7 +28,7 @@ def get_questions(username: str):
         ques.append((title, time_stamp))
         ques_index = html.find("<a class=\"flex h-[56px] items-center rounded px-4")  
 
-    return ques
+    return [x[0] for x in ques]
 
 if __name__ == "__main__":  
     print(get_questions("lakshay21060"))  
