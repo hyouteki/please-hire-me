@@ -34,7 +34,7 @@ def get_sheet():
 
 itoc = lambda i: chr(65+i)
 
-def process_sheet(sheets):
+def update_sheet(sheets):
     values = sheets.values().get(spreadsheetId=SPREADSHEET_ID, 
             range="A1:Z6666").execute().get("values", [])
     status = values[0][1: ]
@@ -65,11 +65,30 @@ def process_sheet(sheets):
                 range=f"{itoc(user_index)}{ques_index+1}", 
                 valueInputOption="USER_ENTERED", body={"values": [["Done"]]}).execute()
 
-def reset(sheet):
-    pass    
+def reset_sheet(sheets):
+    values = sheets.values().get(spreadsheetId=SPREADSHEET_ID, 
+            range="A1:Z6666").execute().get("values", [])
+    users = values[1][1: ]
+    skip = int(values[0][0])
+    for i in range(1, 1+len(users)):
+        if values[0][i] != "Alive":
+            continue
+        for j in range(2+skip, 2+skip+QUESTIONS_PER_WEEK):
+            if len(values[j]) > i and values[j][i] == "Done":
+                continue
+            sheets.values().update(spreadsheetId=SPREADSHEET_ID, 
+                range=f"{itoc(i)}1", 
+                valueInputOption="USER_ENTERED", body={"values": [["Dead"]]}).execute()
+    skip += QUESTIONS_PER_WEEK
+    sheets.values().update(spreadsheetId=SPREADSHEET_ID, 
+        range=f"A1", valueInputOption="USER_ENTERED", 
+        body={"values": [[f"{skip}"]]}).execute()
+
+def reset():
+    reset_sheet(get_sheet())    
 
 def update():
-    process_sheet(get_sheet())
+    update_sheet(get_sheet())
 
 if __name__ == "__main__":
     update()
