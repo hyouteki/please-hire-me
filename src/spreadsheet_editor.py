@@ -65,5 +65,11 @@ def process_sheet(sheets):
                 range=f"{itoc(user_index)}{ques_index+1}", 
                 valueInputOption="USER_ENTERED", body={"values": [["Done"]]}).execute()
 
-if __name__ == "__main__":
+def reset(sheet):
+    pass    
+
+def update():
     process_sheet(get_sheet())
+
+if __name__ == "__main__":
+    update()
