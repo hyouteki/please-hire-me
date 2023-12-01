@@ -1,11 +1,11 @@
-name: update_sheet
+name: reset_sheet
 
 on:
   schedule:
-    - cron: '0,15,30,45 * * * *'
+    - cron: '0 0 * * 2'
 
 jobs:
-  update:
+  reset:
     runs-on: ubuntu-latest
     steps:
       - name: checkout_repository
@@ -26,6 +26,6 @@ jobs:
         run: |
           echo "$TOKEN_JSON" > creds/token.json
           cd src
-          python update.py
+          python reset.py
           cd ..
           rm creds/token.json
