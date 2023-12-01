@@ -2,7 +2,7 @@ name: update_sheet
 
 on:
   schedule:
-    - cron: '0,15,30,45 * * * *'
+    - cron: '*/15 * * * *'
 
 jobs:
   update:
