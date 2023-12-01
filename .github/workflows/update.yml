@@ -24,8 +24,9 @@ jobs:
         env:
           TOKEN_JSON: ${{ secrets.TOKEN_JSON }}
         run: |
+          mkdir creds
           echo "$TOKEN_JSON" > creds/token.json
           cd src
           python update.py
           cd ..
-          rm creds/token.json
+          rm -rf creds
