@@ -1,3 +1,5 @@
+[![Update](https://github.com/hyouteki/please-hire-me/actions/workflows/update.yml/badge.svg?branch=main)](https://github.com/hyouteki/please-hire-me/actions/workflows/update.yml) &nbsp; [![Reset](https://github.com/hyouteki/please-hire-me/actions/workflows/reset.yml/badge.svg?branch=main)](https://github.com/hyouteki/please-hire-me/actions/workflows/reset.yml)
+
 ## What is this?
 This repository manages a  [google spreadsheet](https://docs.google.com/spreadsheets/d/1NcB1bmKRg-j56KUsd7WNHYpkVBx0S7Jkr26LyeJW8HQ) in which leet code users (volunteers) have to mandatorily solve a specified number of questions each week. Furthermore, if they fail to do so, the repository will mark them Dead on the sheet and will not track their progress any further.
 
