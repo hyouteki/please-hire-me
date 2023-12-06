@@ -4,7 +4,7 @@
 This repository manages a  [google spreadsheet](https://docs.google.com/spreadsheets/d/1NcB1bmKRg-j56KUsd7WNHYpkVBx0S7Jkr26LyeJW8HQ) in which leet code users (volunteers) have to mandatorily solve a specified number of questions each week. Furthermore, if they fail to do so, the repository will mark them Dead on the sheet and will not track their progress any further.
 
 ## How does this work?
-There are two workflows (update and reset). The update workflow scrappes the latest 15 questions done by each alive user every 15 minutes. If any questions match the questions allocated this week, the workflow will mark it as Done. The reset workflow triggers once a week, and for any user if not found Done for questions allocated this week, the workflow will mark them as Dead and not track their progress any further.
+There are two workflows (update and reset). The update workflow scrappes the latest 15 questions done by each alive user every 15 minutes. If any questions match the questions allocated this week, the workflow will mark it as Done. The reset workflow triggers once a week _(Tuesday 00:00 AM (GMT) or 05:30 AM (IST))_, and for any user if not found Done for questions allocated this week, the workflow will mark them as Dead and not track their progress any further.
 
 ## How to set this up for yourself?
 > **Note**: Volunteers do not have to set up.<br>
