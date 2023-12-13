@@ -8,7 +8,7 @@ import profile_scrapper
 
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 SPREADSHEET_ID = "1NcB1bmKRg-j56KUsd7WNHYpkVBx0S7Jkr26LyeJW8HQ"
-QUESTIONS_PER_WEEK = 4
+QUESTIONS_PER_WEEK = 10
 
 def get_sheet():
     credentials = None
