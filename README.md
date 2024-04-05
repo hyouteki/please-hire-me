@@ -13,8 +13,7 @@ There are two workflows (update and reset). The update workflow scrappes the lat
 2. Import this [csv template](sheets-template.csv) into your spreadsheet.
 3. Replace sample usernames with actual leet code user names.
 4. Get spreadsheet id from the sheets url. For example, spreadsheet id for this [url](https://docs.google.com/spreadsheets/d/1NcB1bmKRg-j56KUsd7WNHYpkVBx0S7Jkr26LyeJW8HQ/) would be `1NcB1bmKRg-j56KUsd7WNHYpkVBx0S7Jkr26LyeJW8HQ`.
-5. Replace the `SPREADSHEET_ID` with yours.
-   https://github.com/Hyouteki/please-hire-me/blob/579b9b677db0fcb30f5642de9720016099540c8f/src/spreadsheet_editor.py#L10
+5. Replace the `SPREADSHEET_ID` with yours. https://github.com/hyouteki/please-hire-me/blob/579b9b677db0fcb30f5642de9720016099540c8f/src/spreadsheet_editor.py#L10
 6. Follow [this](https://developers.google.com/sheets/api/quickstart/python) blog or watch [this](https://www.youtube.com/watch?v=3wC-SCdJK2c) video on how to setup google speadsheet api in your google cloud project.
 7. Then set up a repository secret using [this](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository), having following credentials.
    ``` cpp
